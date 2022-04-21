@@ -16,17 +16,17 @@ import { getAccessToken } from '../src/commons/libraries/getAccessToken'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyAqZa7hybxrsFOoBM0D6Zwn_OOuyOr8C14',
-  authDomain: 'kbstar-4b5ca.firebaseapp.com',
-  projectId: 'kbstar-4b5ca',
-  storageBucket: 'kbstar-4b5ca.appspot.com',
-  messagingSenderId: '311927489793',
-  appId: '1:311927489793:web:ba0c5aa1281283f258c700'
-}
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyAqZa7hybxrsFOoBM0D6Zwn_OOuyOr8C14',
+//   authDomain: 'kbstar-4b5ca.firebaseapp.com',
+//   projectId: 'kbstar-4b5ca',
+//   storageBucket: 'kbstar-4b5ca.appspot.com',
+//   messagingSenderId: '311927489793',
+//   appId: '1:311927489793:web:ba0c5aa1281283f258c700'
+// }
 
-// Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig)
+// // Initialize Firebase
+// export const firebaseApp = initializeApp(firebaseConfig)
 
 interface IUserInfo{
   name?: string;
@@ -60,11 +60,11 @@ function MyApp ({ Component, pageProps }: AppProps) {
     setBasketItem
   }
 
-  useEffect(() => {
-    if (localStorage.getItem('accessToken')) {
-      setAccessToken(localStorage.getItem('accessToken') || '')
-    }
-  }, [])
+//   useEffect(() => {
+//     if (localStorage.getItem('accessToken')) {
+//       setAccessToken(localStorage.getItem('accessToken') || '')
+//     }
+//   }, [])
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     // 1. 에러를 캐치
@@ -106,7 +106,7 @@ function MyApp ({ Component, pageProps }: AppProps) {
   return (
    <GlobalContext.Provider value={Value}>
     <ApolloProvider client={client}>
-      <Global styles={globalStyles} />
+      <Global styles={globalStyles}/>
       <Layout>
         <Component {...pageProps} />
       </Layout>
