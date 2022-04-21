@@ -4,7 +4,16 @@ export default function HeaderUI(){
     
     return(
         <S.HeaderWrapper>
-            Header 부분입니다
+            <S.HeaderLeft>
+                <img src="/images/DINGCO.png"/>
+            </S.HeaderLeft>
+            <S.HeaderRight>
+               <ul>
+                   <li>로그인</li>
+                   <li>회원가입</li>
+                   <li>장바구니</li>
+               </ul>
+            </S.HeaderRight>
         </S.HeaderWrapper>
     )
 }
