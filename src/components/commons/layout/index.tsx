@@ -1,8 +1,11 @@
 import Header from "./header/header.container";
 import Navi from "./navi/navi.container";
 import styled from "@emotion/styled";
+import Banner from "./banner/banner.container";
 
 const Wrap = styled.div`
+    width: 100%;
+    max-width: 1920px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,6 +17,7 @@ export default function Layout(){
         <Wrap>
             <Header/>
             <Navi/>
+            <Banner/>
         </Wrap>
     )
 }
