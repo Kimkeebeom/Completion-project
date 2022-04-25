@@ -1,21 +1,21 @@
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import * as S from "./banner.styles";
 
 export default function BannerUI(){
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        // autoplay: true,
-        // autoplayspeed: 500,
-        // pauseOnHover: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
+    // const settings = {
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 500,
+    //     autoplay: true,
+    //     autoplayspeed: 500,
+    //     pauseOnHover: true,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    // };
 
     return(
         <S.Wrapper>
-            <Slider {...settings}>
+            {/* <Slider {...settings}> */}
                 <S.SlideBox>
                     <S.SlideContents className="slide1">
                         {/* <div>
@@ -33,7 +33,7 @@ export default function BannerUI(){
                         <span>No.3</span>
                     </div> */}
                 </S.SlideContents>
-            </Slider>
+            {/* </Slider> */}
         </S.Wrapper>
     )
 }

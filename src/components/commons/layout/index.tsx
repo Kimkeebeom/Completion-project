@@ -2,6 +2,7 @@ import Header from "./header/header.container";
 import Navi from "./navi/navi.container";
 import styled from "@emotion/styled";
 import Banner from "./banner/banner.container";
+import Body from "./body/body.container";
 
 const Wrap = styled.div`
     width: 100%;
@@ -18,6 +19,7 @@ export default function Layout(){
             <Header/>
             <Navi/>
             <Banner/>
+            <Body/>
         </Wrap>
     )
 }
