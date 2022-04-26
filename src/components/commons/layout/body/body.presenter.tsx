@@ -9,7 +9,7 @@ export default function BodyUI(){
                 <span>New Arrival</span>
             </S.Header>
             <S.List>
-                {new Array(8).fill(1).map((el, index) => {
+                {new Array(8).fill(1).map((_el, index) => {
                 return <S.ListItems key={index}>
                      <div>
                          <img src="/images/wallpaperbetter.jpg"/>

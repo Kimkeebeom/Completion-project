@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+    box-sizing: border-box;
     width: 100%;
-    /* height: 1513px; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid #555555;
     background-color: #FFFFFF;
 `
 
@@ -26,6 +27,7 @@ export const List = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px 100px;
     margin-top: 100px;
+    margin-bottom: 130px;
     /* background-color: green; */
 `
 
@@ -62,6 +64,7 @@ export const ListItems = styled.div`
 export const ListInfo = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
     
     > div > span:nth-of-type(1){
         font-size: 20px;
@@ -70,7 +73,7 @@ export const ListInfo = styled.div`
         color: red;
     }
     span:nth-of-type(2){
-    font-size: 20px;
-    font-weight: 700;
+        font-size: 20px;
+        font-weight: 700;
     }
 `
