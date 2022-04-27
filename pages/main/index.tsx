@@ -1,9 +1,7 @@
-import Header from "../../src/components/commons/layout/header/header.container";
+import Body from "../../src/components/units/body/body.container";
 
 export default function MainPage(){
     return(
-        // <Header/>
-        <>
-        </>
+       <Body/>
     )
 }
