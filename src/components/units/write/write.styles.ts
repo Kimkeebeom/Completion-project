@@ -22,4 +22,13 @@ export const AddressContents = styled.div`
         color: white;
     }
 `
-export const ImageBox = styled.div``
+export const ImageBox = styled.div`
+    div:nth-of-type(2){
+        width: 180px;
+        height: 180px;
+        background: #BDBDBD;
+    }
+    input{
+        display: none;
+    }
+`
