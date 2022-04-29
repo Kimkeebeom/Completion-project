@@ -7,36 +7,37 @@ import { ReactChild } from "react";
 import { useRouter } from "next/router";
 
 const Wrap = styled.div`
-    width: 100%;
-    max-width: 1920px;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-`
-const WrapperBody = styled.div``
+  width: 100%;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+`;
+const WrapperBody = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const HIDDEN_BANNER = [
-    "/brand"
-]
+const HIDDEN_BANNER = ["/brand"];
 
 interface Iprops {
-    children: ReactChild
+  children: ReactChild;
 }
 
-export default function Layout(props: Iprops){
-    const router = useRouter();
+export default function Layout(props: Iprops) {
+  const router = useRouter();
 
-    const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath)
+  const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
 
-    return(
-        <Wrap>
-            <Header/>
-            <Navi/>
-            {!isHiddenBanner && <Banner/>}
-            <WrapperBody>
-                {props.children}
-            </WrapperBody>
-            <Footer/>
-        </Wrap>
-    )
+  return (
+    <Wrap>
+      <Header />
+      <Navi />
+      {!isHiddenBanner && <Banner />}
+      <WrapperBody>{props.children}</WrapperBody>
+      <Footer />
+    </Wrap>
+  );
 }
