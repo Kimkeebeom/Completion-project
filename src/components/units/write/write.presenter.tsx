@@ -61,36 +61,39 @@ export default function WriteUI(props) {
 
   return (
     <S.Wrapper>
-      <h1 className="title">상품 등록</h1>
-      <hr />
+      <div className="titleBox">
+        <h1 className="title">상품 등록</h1>
+      </div>
       <S.RowWrap>
         <S.Label>상품명</S.Label>
-        <S.Input type="text" />
+        <S.Input type="text" placeholder="상품명을 작성해주세요" />
       </S.RowWrap>
 
-      <S.Name>
-        상품명
-        <input type="text" placeholder="상품명을 작성해주세요" />
-      </S.Name>
-      <S.Summary>
-        상품 요약
-        <input type="text" placeholder="상품요약을 작성해주세요" />
-      </S.Summary>
-      <S.Contents>
-        상품 내용
-        <ReactQuill onChange={handleChange} />
-      </S.Contents>
-      <S.Price>
-        판매 가격
-        <input type="number" placeholder="상품 가격을 입력해주세요" />
-      </S.Price>
-      <S.Tag>
-        태그 입력
-        <input type="tag" placeholder="#태그 #태그 #태그" />
-      </S.Tag>
+      <S.RowWrap>
+        <S.Label>상품 요약</S.Label>
+        <S.Input type="text" placeholder="상품요약을 작성해주세요" />
+      </S.RowWrap>
+
+      <S.RowWrap>
+        <S.Label>상품 내용</S.Label>
+        <div className="ReactQuill">
+          <ReactQuill onChange={handleChange} />
+        </div>
+      </S.RowWrap>
+
+      <S.RowWrap>
+        <S.Label>판매 가격</S.Label>
+        <S.Input type="number" placeholder="상품 가격을 입력해주세요" />
+      </S.RowWrap>
+
+      <S.RowWrap>
+        <S.Label>태그 입력</S.Label>
+        <S.Input type="tag" placeholder="#태그 #태그 #태그" />
+      </S.RowWrap>
+
       <S.Location>
-        <div>브랜드 위치</div>
-        <S.LocationBody>
+        <S.Label>브랜드 위치</S.Label>
+        <S.RowWrap>
           <S.Img>
             <img src="/images/mapExample.png" />
           </S.Img>
@@ -100,12 +103,13 @@ export default function WriteUI(props) {
               <button>우편번호 검색</button>
             </div>
             <S.AddressContents>
-              <input type="address" />
-              <input type="address" />
+              <S.AddressInput type="text" readOnly />
+              <S.AddressInput type="text" />
             </S.AddressContents>
           </S.AddressBox>
-        </S.LocationBody>
+        </S.RowWrap>
       </S.Location>
+
       <S.ImageBox>
         <span>사진 첨부</span>
         <div className="ImageUploadBox">
@@ -119,7 +123,11 @@ export default function WriteUI(props) {
           ))}
         </div>
       </S.ImageBox>
-      {/* <button onClick={onClickSubmit}>등록하기</button> */}
+
+      <S.ButtonBox>
+        <S.RegisButton>등록</S.RegisButton>
+        <S.CancelButton>취소</S.CancelButton>
+      </S.ButtonBox>
     </S.Wrapper>
   );
 }
