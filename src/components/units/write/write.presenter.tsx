@@ -66,7 +66,12 @@ export default function WriteUI(props) {
       </div>
       <S.RowWrap>
         <S.Label>상품명</S.Label>
-        <S.Input type="text" placeholder="상품명을 작성해주세요" />
+        <S.Input
+          type="text"
+          placeholder="상품명을 작성해주세요"
+          onChange={props.onChangeName}
+          defaultValue={props.data ? props.data?.fetchUseditem?.name : ""}
+        />
       </S.RowWrap>
 
       <S.RowWrap>
