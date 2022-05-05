@@ -1,7 +1,6 @@
 import Header from "./header/header.container";
 import Navi from "./navi/navi.container";
 import styled from "@emotion/styled";
-import Banner from "./banner/banner.container";
 import Footer from "./footer/footer.container";
 import { ReactChild } from "react";
 import { useRouter } from "next/router";
@@ -36,8 +35,6 @@ export default function Layout(props: Iprops) {
     <Wrap>
       <Header />
       <Navi />
-      {/* {!isHiddenBanner && <Banner />} */}
-      <Banner />
       <WrapperBody>{props.children}</WrapperBody>
       <Footer />
     </Wrap>

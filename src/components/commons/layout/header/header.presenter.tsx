@@ -8,6 +8,10 @@ export default function HeaderUI() {
     router.push("/main");
   };
 
+  const MoveToLogin = () => {
+    router.push("login");
+  };
+
   return (
     <S.HeaderWrapper>
       <S.HeaderLeft>
@@ -15,7 +19,7 @@ export default function HeaderUI() {
       </S.HeaderLeft>
       <S.HeaderRight>
         <ul>
-          <li>로그인</li>
+          <li onClick={MoveToLogin}>로그인</li>
           <li>회원가입</li>
           <li>장바구니</li>
         </ul>
