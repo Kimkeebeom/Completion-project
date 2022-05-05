@@ -1,39 +1,17 @@
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import * as S from "./banner.styles";
+import { v4 as uuid4 } from "uuid";
 
-export default function BannerUI(){
-    // const settings = {
-    //     dots: true,
-    //     infinite: true,
-    //     speed: 500,
-    //     autoplay: true,
-    //     autoplayspeed: 500,
-    //     pauseOnHover: true,
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    // };
-
-    return(
-        <S.Wrapper>
-            {/* <Slider {...settings}> */}
-                <S.SlideBox>
-                    <S.SlideContents className="slide1">
-                        {/* <div>
-                            <span>No.1</span>
-                        </div> */}
-                    </S.SlideContents>
-                </S.SlideBox>
-                <S.SlideContents className="slide2">
-                    {/* <div>
-                        <span>No.2</span>
-                    </div> */}
-                </S.SlideContents>
-                <S.SlideContents className="slide3">
-                    {/* <div>
-                        <span>No.3</span>
-                    </div> */}
-                </S.SlideContents>
-            {/* </Slider> */}
-        </S.Wrapper>
-    )
+export default function BannerUI(props) {
+  return (
+    <S.Wrapper>
+      <Slider {...props.settings}>
+        {[1, 2, 3, 4].map((el) => (
+          <S.Image key={uuid4()}>
+            <img src={`/images/slider/sliderImage-${el}.jpg`}></img>
+          </S.Image>
+        ))}
+      </Slider>
+    </S.Wrapper>
+  );
 }

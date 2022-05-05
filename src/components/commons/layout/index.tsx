@@ -11,31 +11,33 @@ const Wrap = styled.div`
   max-width: 1920px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
 `;
 const WrapperBody = styled.div`
   width: 100%;
+  max-width: 1920px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const HIDDEN_BANNER = ["/brand", "/login"];
+// const HIDDEN_BANNER = ["/brand"];
 
 interface Iprops {
   children: ReactChild;
 }
 
 export default function Layout(props: Iprops) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
+  // const isHiddenBanner = HIDDEN_BANNER.includes(router.asPath);
 
   return (
     <Wrap>
       <Header />
       <Navi />
-      {!isHiddenBanner && <Banner />}
+      {/* {!isHiddenBanner && <Banner />} */}
+      <Banner />
       <WrapperBody>{props.children}</WrapperBody>
       <Footer />
     </Wrap>
