@@ -70,13 +70,17 @@ export default function WriteUI(props) {
           type="text"
           placeholder="상품명을 작성해주세요"
           onChange={props.onChangeName}
-          defaultValue={props.data ? props.data?.fetchUseditem?.name : ""}
+          // defaultValue={props.data ? props.data?.fetchUseditem?.name : ""}
         />
       </S.RowWrap>
 
       <S.RowWrap>
         <S.Label>상품 요약</S.Label>
-        <S.Input type="text" placeholder="상품요약을 작성해주세요" />
+        <S.Input
+          type="text"
+          placeholder="상품요약을 작성해주세요"
+          onChange={props.onChangeRemarks}
+        />
       </S.RowWrap>
 
       <S.RowWrap>
@@ -88,7 +92,11 @@ export default function WriteUI(props) {
 
       <S.RowWrap>
         <S.Label>판매 가격</S.Label>
-        <S.Input type="number" placeholder="상품 가격을 입력해주세요" />
+        <S.Input
+          type="number"
+          placeholder="상품 가격을 입력해주세요"
+          onChange={props.onChangePrice}
+        />
       </S.RowWrap>
 
       <S.RowWrap>
@@ -130,7 +138,7 @@ export default function WriteUI(props) {
       </S.ImageBox>
 
       <S.ButtonBox>
-        <S.RegisButton>등록</S.RegisButton>
+        <S.RegisButton onClick={props.onClickSubmit}>등록</S.RegisButton>
         <S.CancelButton>취소</S.CancelButton>
       </S.ButtonBox>
     </S.Wrapper>

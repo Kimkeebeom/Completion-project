@@ -20,7 +20,7 @@ const WrapperBody = styled.div`
   align-items: center;
 `;
 
-const HIDDEN_BANNER = ["/brand"];
+const HIDDEN_BANNER = ["/brand", "/login"];
 
 interface Iprops {
   children: ReactChild;
