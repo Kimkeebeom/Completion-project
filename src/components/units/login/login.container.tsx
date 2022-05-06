@@ -19,7 +19,6 @@ interface FormValues {
 export default function loginMainPage() {
   const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const client = useApolloClient();
-  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");

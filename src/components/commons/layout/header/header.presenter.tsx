@@ -3,6 +3,7 @@ import * as S from "./header.styles";
 
 export default function HeaderUI(props) {
   const router = useRouter();
+  // console.log(props.pointData?.fetchPointTransactions[0].balance);
 
   return (
     <S.HeaderWrapper>
@@ -20,9 +21,9 @@ export default function HeaderUI(props) {
             <>
               <li>
                 {props.userInfo?.name}님 포인트{" "}
-                {props.userInfo?.userPoint?.amount}P
+                {props.pointData?.fetchPointTransactions[0].balance}P
               </li>
-              <li>충전</li>
+              <li onClick={props.onClickCharge}>충전</li>
               <li onClick={props.onClickLogout}>로그아웃</li>
               <li>장바구니</li>
             </>
