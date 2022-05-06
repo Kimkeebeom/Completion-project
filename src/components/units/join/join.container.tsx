@@ -115,12 +115,6 @@ export default function Join() {
   };
 
   const onClickCreateButton = async () => {
-    // const { email, password, name } = data;
-    // console.log(data);
-
-    // if (email && password && name) {
-    //   setIsActive(true);
-    // }
     console.log("왜 안돼?ㅡㅡ");
     try {
       await createUser({
