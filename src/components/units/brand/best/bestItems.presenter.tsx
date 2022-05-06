@@ -1,8 +1,9 @@
+import { useRouter } from "next/router";
 import * as B from "./bestItems.styles";
 
 export default function BestItemsUI(props) {
-  console.log(props.data);
-
+  // console.log(props.data);
+  const router = useRouter();
   return (
     <B.Wrap>
       <h1>BEST</h1>
