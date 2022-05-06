@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import {
   IMutation,
-  IMutationLoginUserArgs
+  IMutationLoginUserArgs,
 } from "../../../commons/types/generated/types";
 import { GlobalContext } from "../../../../pages/_app";
 import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./login.queries";
@@ -70,23 +70,20 @@ export default function loginMainPage() {
   };
 
   const onClickLogin = async () => {
-    console.log("아이디: ", email);
-    console.log("비밀번호 : ", password);
     try {
       const result = await loginUser({
         variables: {
           email,
-          password
-        }
+          password,
+        },
       });
       const accessToken = result.data?.loginUser.accessToken || "";
-      console.log(result.data?.loginUser.accessToken);
 
       const resultUserInfo = await client.query({
         query: FETCH_USER_LOGGED_IN,
         context: {
-          headers: { Authorization: `Bearer ${accessToken}` }
-        }
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
       });
       const userInfo = resultUserInfo.data?.fetchUserLoggedIn;
 
@@ -96,10 +93,12 @@ export default function loginMainPage() {
       localStorage.setItem("accessToken", accessToken || "");
       localStorage.setItem("userInfo", JSON.stringify(userInfo) || "");
 
-      console.log(localStorage.getItem("accessToken"));
-      console.log(JSON.parse(localStorage.getItem("userInfo") || "{}"));
-
-      // router.push("/main");
+      Modal.info({
+        content: "로그인 되었습니다",
+        onOk() {
+          window.location.replace("/main");
+        },
+      });
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
