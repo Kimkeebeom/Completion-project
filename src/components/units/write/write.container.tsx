@@ -152,6 +152,7 @@ export default function Write(props: IProductWriteUI) {
       address={address}
       addressDetail={addressDetail}
       data={props.data}
+      isEdit={props.isEdit}
     />
   );
 }
