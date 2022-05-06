@@ -121,7 +121,7 @@ export default function Write() {
       });
       console.log("result:", result);
       Modal.success({ content: "상품이 성공적으로 등록되었습니다" });
-      router.push(`/product/${result.data.createUseditem._id}`);
+      router.push(`/brand/${result.data.createUseditem._id}`);
     } catch (error) {
       Modal.error({ content: error.message });
     }
