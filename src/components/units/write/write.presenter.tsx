@@ -23,7 +23,6 @@ export default function WriteUI(props: IProductWriteUI) {
     // trigger('contents')
     // }
   };
-  console.log("data:", props.data);
 
   return (
     <S.Wrapper>
