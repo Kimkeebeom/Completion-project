@@ -27,25 +27,9 @@ export const HeaderRight = styled.div`
     margin-right: 25px;
     cursor: pointer;
     position: relative;
-
-    /* padding: 12px 0; */
     font-weight: 400;
     font-size: 14px;
     line-height: 100%;
     color: black;
   }
-  /* & ul > li.nav__list.active__page {
-    color: #0d223a;
-    ::after {
-      display: block;
-      content: " ";
-      width: 100%;
-      height: 2px;
-      background-color: #3894ff;
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-    }
-  } */
-  /* color: #9d9d9d; */
 `;

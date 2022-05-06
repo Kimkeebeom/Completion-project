@@ -5,7 +5,7 @@ import * as S from "./body.styles";
 
 export default function BodyUI(props) {
   const router = useRouter();
-  console.log(props.data?.fetchUseditems);
+  // console.log(props.data?.fetchUseditems);
 
   return (
     <>
