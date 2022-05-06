@@ -22,12 +22,6 @@ const TOGGLE_PICK = gql`
   }
 `;
 
-const FETCH_PICK = gql`
-  query toggleUseditemPick($useditemId: ID!) {
-    toggleUseditemPick(useditemId: $useditemId)
-  }
-`;
-
 export default function Detail() {
   const router = useRouter();
 
