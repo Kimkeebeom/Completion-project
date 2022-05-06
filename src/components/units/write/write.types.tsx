@@ -6,6 +6,7 @@ export interface IWriteContext {
 }
 
 export interface IProductWriteUI {
+  isModalVisible?: boolean;
   data: any;
   setImages: string;
   images: any;
@@ -18,6 +19,7 @@ export interface IProductWriteUI {
   showModal: MouseEventHandler<HTMLElement>;
   handleCancel: (e: MouseEvent<HTMLElement, MouseEvent>) => void;
   handleOk: (e: MouseEvent<HTMLElement, MouseEvent>) => void;
+  onChangeImages: (image: string, index: number) => void;
 
   onChangeName: ChangeEventHandler<HTMLInputElement>;
   onChangeRemarks: ChangeEventHandler<HTMLInputElement>;

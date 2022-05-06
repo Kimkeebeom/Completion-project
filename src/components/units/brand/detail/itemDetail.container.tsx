@@ -26,7 +26,7 @@ export default function Detail() {
   });
 
   const MoveToproductEdit = () => {
-    router.push(`/brand/${router.query.move}/edit`);
+    router.push(`/brand/${router.query.itemId}/edit`);
   };
 
   return <DetailUI data={data} MoveToproductEdit={MoveToproductEdit} />;

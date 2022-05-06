@@ -8,10 +8,11 @@ import {
 } from "../../../commons/types/generated/types";
 import WriteUI from "./write.presenter";
 import { CREATE_USED_ITEM } from "./write.queries";
+import { IProductWriteUI } from "./write.types";
 
 // export const WriteContext = createContext<IWriteContext>({})
 
-export default function Write() {
+export default function Write(props: IProductWriteUI) {
   const router = useRouter();
 
   const [createUseditem] = useMutation<
@@ -32,12 +33,12 @@ export default function Write() {
   const [addressDetail, setAddressDetail] = useState("");
   const [zipcode, setZipcode] = useState("");
 
-  const onChangeImages = (image: string, index: number) => {
-    const newImages = [...images];
-    newImages[index] = image;
-    setImages(newImages);
-    console.log("image:", newImages);
-  };
+  // const onChangeImages = (image: string, index: number) => {
+  //   const newImages = [...images];
+  //   newImages[index] = image;
+  //   setImages(newImages);
+  //   console.log("image:", newImages);
+  // };
 
   const onChangeName = (event: {
     target: { value: SetStateAction<string> };
@@ -131,7 +132,7 @@ export default function Write() {
 
   return (
     <WriteUI
-      onChangeImages={onChangeImages}
+      // onChangeImages={onChangeImages}
       onChangeName={onChangeName}
       onChangeRemarks={onChangeRemarks}
       onChangeContents={onChangeContents}
@@ -145,10 +146,13 @@ export default function Write() {
       handleOk={handleOk}
       handleCancel={handleCancel}
       images={images}
+      // setImages={setImages}
       isModalVisible={isModalVisible}
       zipcode={zipcode}
       address={address}
       addressDetail={addressDetail}
+      data={props.data}
+      isEdit={props.isEdit}
     />
   );
 }

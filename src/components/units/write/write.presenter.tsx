@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { v4 as uuidv4 } from "uuid";
 import UploadImage from "../../commons/upload/image/uploadImage.container";
 import { IProductWriteUI } from "./write.types";
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false
@@ -21,11 +23,12 @@ export default function WriteUI(props: IProductWriteUI) {
     // trigger('contents')
     // }
   };
+  console.log("data:", props.data);
 
   return (
     <S.Wrapper>
       <div className="titleBox">
-        <h1 className="title">{props.isEdit ? "상품 수정" : "상품 등록"}</h1>
+        <h1 className="title">{props.isEdit ? "수정" : "등록"}</h1>
       </div>
       <S.RowWrap>
         <S.Label>상품명</S.Label>
@@ -43,13 +46,17 @@ export default function WriteUI(props: IProductWriteUI) {
           type="text"
           placeholder="상품요약을 작성해주세요"
           onChange={props.onChangeRemarks}
+          defaultValue={props.data ? props.data?.fetchUseditem?.remarks : ""}
         />
       </S.RowWrap>
 
       <S.RowWrap>
         <S.Label>상품 내용</S.Label>
         <div className="ReactQuill">
-          <ReactQuill onChange={handleChange} />
+          <ReactQuill
+            onChange={handleChange}
+            defaultValue={props.data ? props.data?.fetchUseditem?.contents : ""}
+          />
         </div>
       </S.RowWrap>
 
@@ -59,6 +66,7 @@ export default function WriteUI(props: IProductWriteUI) {
           type="number"
           placeholder="상품 가격을 입력해주세요"
           onChange={props.onChangePrice}
+          defaultValue={props.data ? props.data?.fetchUseditem?.price : ""}
         />
       </S.RowWrap>
 
@@ -73,14 +81,51 @@ export default function WriteUI(props: IProductWriteUI) {
           <S.Img>
             <img src="/images/mapExample.png" />
           </S.Img>
+          {props.isModalVisible && (
+            <Modal
+              title="주소 검색"
+              visible={true}
+              onOk={props.handleOk}
+              onCancel={props.handleCancel}
+            >
+              <DaumPostcode onComplete={props.onCompleteDaumPostCode} />
+            </Modal>
+          )}
           <S.AddressBox>
             <div>
-              <input type="text" placeholder="07250" />
-              <button>우편번호 검색</button>
+              <input
+                type="primary"
+                placeholder="07250"
+                onChange={props.onChangeZipcode}
+                value={
+                  props.zipcode
+                    ? props.zipcode
+                    : props.data?.fetchUseditem?.useditemAddress?.zipcode
+                }
+              />
+              <button onClick={props.showModal}>우편번호 검색</button>
             </div>
             <S.AddressContents>
-              <S.AddressInput type="text" readOnly />
-              <S.AddressInput type="text" />
+              <S.AddressInput
+                type="text"
+                onChange={props.onChangeAddress}
+                defaultValue={
+                  props.address
+                    ? props.address
+                    : props.data?.fetchUseditem?.useditemAddress?.address
+                }
+                readOnly
+              />
+              <S.AddressInput
+                type="text"
+                placeholder="상세주소 입력"
+                onChange={props.onChangeAddressDetail}
+                defaultValue={
+                  props.addressDetail
+                    ? props.addressDetail
+                    : props.data?.fetchUseditem?.useditemAddress?.addressDetail
+                }
+              />
             </S.AddressContents>
           </S.AddressBox>
         </S.RowWrap>
@@ -95,13 +140,19 @@ export default function WriteUI(props: IProductWriteUI) {
               fileRef={""}
               index={index}
               images={el}
+              // setImage={props.setImages}
             />
           ))}
         </div>
       </S.ImageBox>
 
       <S.ButtonBox>
-        <S.RegisButton onClick={props.onClickSubmit}>등록</S.RegisButton>
+        <S.RegisButton
+          onClick={props.isEdit ? props.onClickSubmit : props.onClickSubmit}
+          isActive={props.isActive}
+        >
+          {props.isEdit ? "수정" : "등록"}
+        </S.RegisButton>
         <S.CancelButton>취소</S.CancelButton>
       </S.ButtonBox>
     </S.Wrapper>
