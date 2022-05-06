@@ -22,6 +22,9 @@ export const Body = styled.div`
   margin: 175px 0px 315px;
 `;
 export const LoginBox = styled.div`
+  p {
+    color: red;
+  }
   span {
     font-size: 24px;
     font-weight: 400;

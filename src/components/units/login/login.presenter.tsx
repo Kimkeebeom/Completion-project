@@ -1,6 +1,6 @@
 import * as S from "./login.styles";
 
-export default function LoginUI() {
+export default function LoginUI(props) {
   return (
     <S.Wrapper>
       <S.Header>
@@ -9,21 +9,25 @@ export default function LoginUI() {
       <S.Body>
         <S.LoginBox>
           <S.LoginId>
-            <span>아이디</span>
-            <input
-              type="email"
-              placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
-            />
+          <span>아이디</span>
+          <input
+            type="email"
+            placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
+            onChange={props.onChangeEmail}
+          />
           </S.LoginId>
+          <p>{props.errorEmail}</p>
           <S.LoginPassword>
-            <span>비밀번호</span>
-            <input
-              type="password"
-              placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
-            />
+          <span>비밀번호</span>
+          <input
+            type="password"
+            placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
+            onChange={props.onChangePassword}
+          />
           </S.LoginPassword>
+          <p>{props.errorPassword}</p>
         </S.LoginBox>
-        <S.Button>로그인</S.Button>
+        <S.Button onClick={props.onClickLogin}>로그인</S.Button>
       </S.Body>
     </S.Wrapper>
   );
