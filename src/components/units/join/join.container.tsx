@@ -115,19 +115,22 @@ export default function Join() {
   };
 
   const onClickCreateButton = async () => {
-    console.log("왜 안돼?ㅡㅡ");
     try {
       await createUser({
         variables: {
           createUserInput: {
             email: createEmail,
             password: createPassword,
-            name: createName
-          }
-        }
+            name: createName,
+          },
+        },
       });
-      Modal.success({ content: "회원가입이 완료되었습니다." });
-      router.push("/login");
+      Modal.success({
+        content: "회원가입이 완료되었습니다",
+        onOk() {
+          router.push("/login");
+        },
+      });
     } catch (error) {
       Modal.error({ content: error.message });
     }
