@@ -1,5 +1,4 @@
 import { gql, useQuery } from "@apollo/client";
-import { useEffect } from "react";
 import BodyUI from "./body.presenter";
 
 const FETCH_USED_ITEMS = gql`
@@ -20,7 +19,7 @@ const FETCH_USED_ITEMS = gql`
 
 export default function Body() {
   const { data } = useQuery(FETCH_USED_ITEMS, {
-    variables: { isSoldout: false, search: "", page: 1 }
+    variables: { isSoldout: false, search: "", page: 1 },
   });
 
   return <BodyUI data={data} />;
