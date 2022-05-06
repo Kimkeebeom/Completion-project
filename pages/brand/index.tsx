@@ -1,4 +1,6 @@
-export default function BrandPage() {
+import withAuth from "../../src/components/commons/hocs/withAuth";
+
+export function BrandPage() {
   return (
     <h1>
       브랜드페이지입니다
@@ -6,3 +8,5 @@ export default function BrandPage() {
     </h1>
   );
 }
+
+export default withAuth(BrandPage);

@@ -13,6 +13,8 @@ export default function Header() {
     try {
       logoutUser();
       localStorage.setItem("userInfo", JSON.stringify(""));
+      localStorage.setItem("accessToken", "");
+
       Modal.info({
         content: "로그아웃 되었습니다",
         onOk() {

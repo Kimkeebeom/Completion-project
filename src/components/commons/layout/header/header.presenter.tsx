@@ -36,7 +36,13 @@ export default function HeaderUI(props) {
               >
                 로그인
               </li>
-              <li>회원가입</li>
+              <li
+                onClick={() => {
+                  router.push(`/join`);
+                }}
+              >
+                회원가입
+              </li>
               <li>장바구니</li>
             </>
           )}
