@@ -132,3 +132,5 @@ export const DetailAddress = styled.div`
     margin-bottom: 20px;
   }
 `;
+
+export const EditButton = styled.button``;

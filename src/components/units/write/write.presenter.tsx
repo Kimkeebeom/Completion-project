@@ -1,37 +1,15 @@
-// import { useForm } from 'react-hook-form';
-// import { gql, useMutation } from '@apollo/client';
 import "react-quill/dist/quill.snow.css";
 import * as S from "./write.styles";
 import dynamic from "next/dynamic";
 import { v4 as uuidv4 } from "uuid";
 import UploadImage from "../../commons/upload/image/uploadImage.container";
-// import { WriteContext } from './write.container';
-// import { IMutation, IMutationCreateUseditemArgs } from '../../../commons/types/generated/types';
-// const { onChangeFile } = useContext(WriteContext)
+import { IProductWriteUI } from "./write.types";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false
 });
 
-// const CREATE_USED_ITEM = gql`
-//     mutation createUseditem($createUseditemInput: CreateUseditemInput!){
-//         createUseditem(createUseditemInput: $createUseditemInput){
-//             _id
-//             name
-//         }
-//     }
-// `
-
-export default function WriteUI(props) {
-  // const [createUseditem] = useMutation<
-  // Pick<IMutation, 'createUseditem'>,
-  // IMutationCreateUseditemArgs
-  // >(CREATE_USED_ITEM)
-
-  // const {handleSubmit, setValue, trigger} = useForm({
-  //     mode: "onChange",
-  // })
-
+export default function WriteUI(props: IProductWriteUI) {
   const handleChange = (value: string) => {
     console.log(value);
     // value값이 <p><br></p>와 같으면 빈 문자로 보여주고 아니면 value값을 보여주기
@@ -42,27 +20,12 @@ export default function WriteUI(props) {
     // onChange됐는지 안됐는지 알려주는 기능
     // trigger('contents')
     // }
-
-    // const onClickSubmit = async () => {
-    //     try{
-    //         const result = await createUseditem({
-    //             variables: {
-    //                 createUseditemInput:{
-    //                     name
-    //                 }
-    //             }
-    //         })
-    //         console.log("result:", result)
-    //         Modal.success({content:'상품이 성공적으로 등록되었습니다.'})
-    //     } catch (error) {
-    //         Modal.error({content:error.message})
-    //     }
   };
 
   return (
     <S.Wrapper>
       <div className="titleBox">
-        <h1 className="title">상품 등록</h1>
+        <h1 className="title">{props.isEdit ? "상품 수정" : "상품 등록"}</h1>
       </div>
       <S.RowWrap>
         <S.Label>상품명</S.Label>
@@ -70,7 +33,7 @@ export default function WriteUI(props) {
           type="text"
           placeholder="상품명을 작성해주세요"
           onChange={props.onChangeName}
-          // defaultValue={props.data ? props.data?.fetchUseditem?.name : ""}
+          defaultValue={props.data ? props.data?.fetchUseditem?.name : ""}
         />
       </S.RowWrap>
 

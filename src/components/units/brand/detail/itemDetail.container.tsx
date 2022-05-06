@@ -21,9 +21,13 @@ export default function Detail() {
 
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: {
-      useditemId: String(router.query.itemId),
-    },
+      useditemId: String(router.query.itemId)
+    }
   });
 
-  return <DetailUI data={data} />;
+  const MoveToproductEdit = () => {
+    router.push(`/brand/${router.query.move}/edit`);
+  };
+
+  return <DetailUI data={data} MoveToproductEdit={MoveToproductEdit} />;
 }
