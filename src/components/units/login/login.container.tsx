@@ -2,9 +2,6 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as yup from "yup";
 import {
   IMutation,
   IMutationLoginUserArgs
@@ -13,18 +10,6 @@ import { GlobalContext } from "../../../../pages/_app";
 import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./login.queries";
 import LoginUI from "./login.presenter";
 
-// const schema = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email("이메일 형식이 적합하지 않습니다.")
-//     .required("이메일은 필수 입력 사항입니다."),
-//   password: yup
-//     .string()
-//     .min(4, "비밀번호는 최소 4자리 이상 입력해주세요.")
-//     .max(15, "비밀번호는 최대 15자리이하로 입력해주세요.")
-//     .required("비밀번호는 필수 입력 사항입니다.")
-// });
-
 interface FormValues {
   target?: any;
   Email?: string;
@@ -32,11 +17,6 @@ interface FormValues {
 }
 
 export default function loginMainPage() {
-  // const { register, handleSubmit, formState } = useForm<FormValues>({
-  //   mode: "onChange",
-  //   resolver: yupResolver(schema)
-  // });
-
   const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const client = useApolloClient();
   const router = useRouter();
@@ -69,10 +49,6 @@ export default function loginMainPage() {
       setIsActive(false);
     }
   };
-  // const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(event.target.value);
-  //   console.log(event.target.value)
-  // };
 
   const onChangePassword = (event) => {
     setPassword(event.target.value);
@@ -92,10 +68,6 @@ export default function loginMainPage() {
       setIsActive(false);
     }
   };
-  // const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setPassword(event.target.value);
-  //   console.log(event.target.value,"외안되 눈참많이오네")
-  // };
 
   const onClickLogin = async () => {
     console.log("아이디: ", email);
@@ -127,7 +99,7 @@ export default function loginMainPage() {
       console.log(localStorage.getItem("accessToken"));
       console.log(JSON.parse(localStorage.getItem("userInfo") || "{}"));
 
-      router.push("/main");
+      // router.push("/main");
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
