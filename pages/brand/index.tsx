@@ -1,5 +1,8 @@
-import Write from "../../src/components/units/write/write.container";
-
-export default function WritePage() {
-  return <Write />;
+export default function BrandPage() {
+  return (
+    <h1>
+      브랜드페이지입니다
+      <p>brand</p>
+    </h1>
+  );
 }

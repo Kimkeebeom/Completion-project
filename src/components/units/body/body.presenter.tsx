@@ -1,9 +1,12 @@
+import { useRouter } from "next/router";
 import Banner from "../../commons/layout/banner/banner.container";
 import * as S from "./body.styles";
 // import { v4 as uuidv4 } from "uuid";
 
 export default function BodyUI(props) {
+  const router = useRouter();
   console.log(props.data?.fetchUseditems);
+
   return (
     <>
       <Banner />
@@ -17,7 +20,10 @@ export default function BodyUI(props) {
               return (
                 <S.ListItems key={index}>
                   <div>
-                    <img src="/images/wallpaperbetter.jpg" />
+                    <img
+                      src="/images/wallpaperbetter.jpg"
+                      onClick={() => router.push(`/brand/${el._id}`)}
+                    />
                     <img
                       className="heart"
                       src="/images/heart.svg"
