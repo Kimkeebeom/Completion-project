@@ -7,6 +7,7 @@ export default function ItemsUnitUI(props) {
   return (
     <I.ListItems key={uuidv4()}>
       <div>
+        <div></div>
         <img
           src={
             props.el.images[0]
