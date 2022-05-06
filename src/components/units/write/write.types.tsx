@@ -6,6 +6,12 @@ export interface IWriteContext {
 }
 
 export interface IProductWriteUI {
+  onChangeContents: (
+    content: string
+    // delta: Delta,
+    // source: Sources,
+    // editor: UnprivilegedEditor
+  ) => void;
   isModalVisible?: boolean;
   data: any;
   setImages: string;

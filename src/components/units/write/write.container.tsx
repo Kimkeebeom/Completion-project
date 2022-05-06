@@ -4,10 +4,11 @@ import { useRouter } from "next/router";
 import { SetStateAction, useState } from "react";
 import {
   IMutation,
-  IMutationCreateUseditemArgs
+  IMutationCreateUseditemArgs,
+  IMutationUpdateUseditemArgs
 } from "../../../commons/types/generated/types";
 import WriteUI from "./write.presenter";
-import { CREATE_USED_ITEM } from "./write.queries";
+import { CREATE_USED_ITEM, UPDATE_USED_ITEM } from "./write.queries";
 import { IProductWriteUI } from "./write.types";
 
 // export const WriteContext = createContext<IWriteContext>({})
@@ -19,6 +20,11 @@ export default function Write(props: IProductWriteUI) {
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
   >(CREATE_USED_ITEM);
+
+  const [updateUseditem] = useMutation<
+    Pick<IMutation, "updateUseditem">,
+    IMutationUpdateUseditemArgs
+  >(UPDATE_USED_ITEM);
 
   const [images, setImages] = useState(["", ""]);
   // const [image, setImage] = useState<IWrite | string[] >(["",""])
@@ -126,8 +132,55 @@ export default function Write(props: IProductWriteUI) {
     } catch (error) {
       Modal.error({ content: error.message });
     }
-    // console.log(data)
-    // setValue("images", value === "url" ? "": value)
+  };
+
+  const onClickUpdateSubmit = async () => {
+    interface IAdress {
+      zipcode: string;
+      address: string;
+      addressDetail?: string;
+    }
+    interface IUpdatedUseditemInput {
+      useditemAddress: IAdress;
+      images: string[];
+      price: number;
+      contents: string;
+      remarks: string;
+      name: string;
+    }
+    const myIUpdatedUseditemInput: IUpdatedUseditemInput = {
+      images: [],
+      price: 0,
+      contents: "",
+      remarks: "",
+      name: "",
+      useditemAddress: {
+        address,
+        addressDetail,
+        zipcode
+      }
+    };
+    if (name !== "") myIUpdatedUseditemInput.name = name;
+    if (remarks !== "") myIUpdatedUseditemInput.remarks = remarks;
+    if (contents !== "") myIUpdatedUseditemInput.contents = contents;
+    if (price !== Number("")) myIUpdatedUseditemInput.price = price;
+    if (images !== []) myIUpdatedUseditemInput.images = images;
+    if (address) myIUpdatedUseditemInput.useditemAddress.address = address;
+    if (addressDetail) {
+      myIUpdatedUseditemInput.useditemAddress.addressDetail = addressDetail;
+    }
+    if (zipcode) myIUpdatedUseditemInput.useditemAddress.zipcode = zipcode;
+    try {
+      await updateUseditem({
+        variables: {
+          useditemId: props.data?.fetchUseditem._id,
+          updateUseditemInput: myIUpdatedUseditemInput
+        }
+      });
+      router.push(`/brand/${router.query.itemId}`);
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -140,6 +193,7 @@ export default function Write(props: IProductWriteUI) {
       onChangeAddress={onChangeAddress}
       onChangeAddressDetail={onChangeAddressDetail}
       onClickSubmit={onClickSubmit}
+      onClickUpdateSubmit={onClickUpdateSubmit}
       onChangeZipcode={onChangeZipcode}
       onCompleteDaumPostCode={onCompleteDaumPostCode}
       showModal={showModal}
