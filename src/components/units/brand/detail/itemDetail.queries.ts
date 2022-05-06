@@ -29,3 +29,15 @@ export const FETCH_USED_ITEM = gql`
     }
   }
 `;
+
+export const TOGGLE_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;
+
+export const FETCH_PICK = gql`
+  query toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;

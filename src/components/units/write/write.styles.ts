@@ -22,10 +22,10 @@ export const RowWrap = styled.div`
   border-bottom: 1px solid #999999;
   width: 100%;
 
-  .ReactQuill {
+  /* .ReactQuill {
     width: 1420px;
     margin-right: 20px;
-  }
+  } */
 `;
 
 export const Label = styled.div`
@@ -41,6 +41,10 @@ export const Input = styled.input`
   height: 55px;
   background: #e9e9e9;
   margin-right: 20px;
+`;
+
+export const Contents = styled.input`
+  width: 80%;
 `;
 
 export const AddressInput = styled.input`

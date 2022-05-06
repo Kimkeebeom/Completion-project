@@ -15,8 +15,7 @@ export const IWrap = styled.div`
 
 export const ImageWrap = styled.div`
   width: 45%;
-  /* height: 400px; */
-  background-color: yellow;
+  border: 1px solid black;
 `;
 
 export const InfoWrap = styled.div`
@@ -53,12 +52,20 @@ export const ItemContents = styled.div`
   padding-right: 10px;
 `;
 
+export const Remarks = styled.div`
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
+
 export const Contents = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
 `;
 
-export const Tags = styled.div``;
+export const Tags = styled.div`
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
 
 export const ButtonWrap = styled.div`
   display: flex;
