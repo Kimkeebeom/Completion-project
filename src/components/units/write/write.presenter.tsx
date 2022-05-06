@@ -23,7 +23,6 @@ export default function WriteUI(props: IProductWriteUI) {
     // trigger('contents')
     // }
   };
-  console.log("data:", props.data);
 
   return (
     <S.Wrapper>
@@ -52,13 +51,17 @@ export default function WriteUI(props: IProductWriteUI) {
 
       <S.RowWrap>
         <S.Label>상품 내용</S.Label>
-        <div className="ReactQuill">
+        {/* <div className="ReactQuill">
           <ReactQuill
             onChange={handleChange}
-            // onChange={props.onChangeContents}
             defaultValue={props.data ? props.data?.fetchUseditem?.contents : ""}
           />
-        </div>
+        </div> */}
+        <S.Contents
+          type="textarea"
+          onChange={props.onChangeContents}
+          defaultValue={props.data ? props.data?.fetchUseditem?.contents : ""}
+        />
       </S.RowWrap>
 
       <S.RowWrap>
@@ -140,8 +143,8 @@ export default function WriteUI(props: IProductWriteUI) {
               key={uuidv4()}
               fileRef={""}
               index={index}
-              images={el}
-              // setImage={props.setImages}
+              image={el}
+              onChangeImages={props.onChangeImages}
             />
           ))}
         </div>

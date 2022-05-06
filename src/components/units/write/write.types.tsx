@@ -6,12 +6,6 @@ export interface IWriteContext {
 }
 
 export interface IProductWriteUI {
-  onChangeContents: (
-    content: string
-    // delta: Delta,
-    // source: Sources,
-    // editor: UnprivilegedEditor
-  ) => void;
   isModalVisible?: boolean;
   data: any;
   setImages: string;
@@ -30,6 +24,7 @@ export interface IProductWriteUI {
   onChangeName: ChangeEventHandler<HTMLInputElement>;
   onChangeRemarks: ChangeEventHandler<HTMLInputElement>;
   onChangePrice: ChangeEventHandler<HTMLInputElement>;
+  onChangeContents: ChangeEventHandler<HTMLInputElement>;
   onChangeAddress: ChangeEventHandler<HTMLInputElement>;
   onChangeAddressDetail: ChangeEventHandler<HTMLInputElement>;
   onChangeZipcode: ChangeEventHandler<HTMLInputElement>;

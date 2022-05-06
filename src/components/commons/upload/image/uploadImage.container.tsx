@@ -9,10 +9,10 @@ import { IUploadImage } from "./uploadImage.types";
 import * as S from "./uploadImage.styles";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function UploadImage(_props: IUploadImage) {
+export default function UploadImage(props: IUploadImage) {
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
 
   const [uploadFile] = useMutation<
     Pick<IMutation, "uploadFile">,
@@ -29,8 +29,9 @@ export default function UploadImage(_props: IUploadImage) {
         }
       });
       // console.log(result.data?.uploadFile.url)
-      setImage(result.data?.uploadFile.url);
-      // props.images(result.data?.uploadFile.url, props.index)
+      // setImage(result.data?.uploadFile.url);
+      props.onChangeImages(result.data?.uploadFile.url, props.index);
+      // console.log(result.data?.uploadFile.url);
     } catch (error) {
       alert(error.message);
     }
@@ -42,10 +43,10 @@ export default function UploadImage(_props: IUploadImage) {
 
   return (
     <>
-      {image ? (
+      {props.image ? (
         <S.Image
           onClick={onClickImage}
-          src={`https://storage.googleapis.com/${image}`}
+          src={`https://storage.googleapis.com/${props.image}`}
         />
       ) : (
         <S.UploadButton onClick={onClickImage}>

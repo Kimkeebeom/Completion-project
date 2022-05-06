@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import {
   IMutation,
   IMutationCreateUseditemArgs,
@@ -39,12 +39,12 @@ export default function Write(props: IProductWriteUI) {
   const [addressDetail, setAddressDetail] = useState("");
   const [zipcode, setZipcode] = useState("");
 
-  // const onChangeImages = (image: string, index: number) => {
-  //   const newImages = [...images];
-  //   newImages[index] = image;
-  //   setImages(newImages);
-  //   console.log("image:", newImages);
-  // };
+  const onChangeImages = (image: string, index: number) => {
+    const newImages = [...images];
+    newImages[index] = image;
+    setImages(newImages);
+    console.log("image:", newImages);
+  };
 
   const onChangeName = (event: {
     target: { value: SetStateAction<string> };
@@ -109,6 +109,7 @@ export default function Write(props: IProductWriteUI) {
   };
 
   const onClickSubmit = async () => {
+    console.log("image:", images);
     try {
       const result = await createUseditem({
         variables: {
@@ -149,16 +150,16 @@ export default function Write(props: IProductWriteUI) {
       name: string;
     }
     const myIUpdatedUseditemInput: IUpdatedUseditemInput = {
-      images: [],
-      price: 0,
-      contents: "",
-      remarks: "",
-      name: "",
-      useditemAddress: {
-        address,
-        addressDetail,
-        zipcode
-      }
+      images: []
+      // price: 0,
+      // contents: "",
+      // remarks: "",
+      // name: "",
+      // useditemAddress: {
+      //   address,
+      //   addressDetail,
+      //   zipcode
+      // }
     };
     if (name !== "") myIUpdatedUseditemInput.name = name;
     if (remarks !== "") myIUpdatedUseditemInput.remarks = remarks;
@@ -171,21 +172,28 @@ export default function Write(props: IProductWriteUI) {
     }
     if (zipcode) myIUpdatedUseditemInput.useditemAddress.zipcode = zipcode;
     try {
-      await updateUseditem({
-        variables: {
-          useditemId: props.data?.fetchUseditem._id,
-          updateUseditemInput: myIUpdatedUseditemInput
-        }
-      });
-      router.push(`/brand/${router.query.itemId}`);
+      console.log(name, remarks);
+      // await updateUseditem({
+      //   variables: {
+      //     useditemId: props.data?.fetchUseditem._id,
+      //     updateUseditemInput: myIUpdatedUseditemInput
+      //   }
+      // });
+      // router.push(`/brand/${router.query.itemId}`);
     } catch (error) {
       alert(error.message);
     }
   };
 
+  useEffect(() => {
+    if (props.data?.fetchUseditem?.images?.length) {
+      setImages([...props.data?.fetchUseditem?.images]);
+    }
+  }, [props.data]);
+
   return (
     <WriteUI
-      // onChangeImages={onChangeImages}
+      onChangeImages={onChangeImages}
       onChangeName={onChangeName}
       onChangeRemarks={onChangeRemarks}
       onChangeContents={onChangeContents}
