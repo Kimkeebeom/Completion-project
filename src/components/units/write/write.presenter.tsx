@@ -55,6 +55,7 @@ export default function WriteUI(props: IProductWriteUI) {
         <div className="ReactQuill">
           <ReactQuill
             onChange={handleChange}
+            // onChange={props.onChangeContents}
             defaultValue={props.data ? props.data?.fetchUseditem?.contents : ""}
           />
         </div>
@@ -148,7 +149,9 @@ export default function WriteUI(props: IProductWriteUI) {
 
       <S.ButtonBox>
         <S.RegisButton
-          onClick={props.isEdit ? props.onClickSubmit : props.onClickSubmit}
+          onClick={
+            props.isEdit ? props.onClickUpdateSubmit : props.onClickSubmit
+          }
           isActive={props.isActive}
         >
           {props.isEdit ? "수정" : "등록"}

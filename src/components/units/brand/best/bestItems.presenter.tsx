@@ -1,3 +1,4 @@
+import router from "next/router";
 import * as B from "./bestItems.styles";
 
 export default function BestItemsUI(props) {
