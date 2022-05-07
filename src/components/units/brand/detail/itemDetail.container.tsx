@@ -42,7 +42,7 @@ export default function Detail() {
         }
       });
       console.log(result);
-      setIsActive((prev) => !prev);
+      setIsActive(true);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
