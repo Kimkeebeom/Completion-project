@@ -37,7 +37,25 @@ export const TOGGLE_PICK = gql`
 `;
 
 export const FETCH_PICK = gql`
-  query toggleUseditemPick($useditemId: ID!) {
-    toggleUseditemPick(useditemId: $useditemId)
+  query fetchUseditemsIPicked($search: String, $page: Int) {
+    fetchUseditemsIPicked(search: $search, page: $page) {
+      _id
+    }
   }
 `;
+
+// export const UPDATE_BOARD = gql`
+//   mutation updateBoard(
+//     $boardId: ID!
+//     $password: String
+//     $updateBoardInput: UpdateBoardInput!
+//   ) {
+//     updateBoard(
+//       boardId: $boardId
+//       password: $password
+//       updateBoardInput: $updateBoardInput
+//     ) {
+//       _id
+//     }
+//   }
+// `

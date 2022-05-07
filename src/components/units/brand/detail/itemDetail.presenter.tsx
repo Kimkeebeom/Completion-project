@@ -133,7 +133,14 @@ export default function DetailUI(props: {
             </D.ItemPrice>
             <D.ItemPick>
               <span>MY</span>
-              <img src="/icons/heart.svg" onClick={props.togglePick} />
+              <img
+                src={
+                  props.isActive ? "/images/heart.svg" : "/images/redHeart.svg"
+                }
+                onClick={props.onClickTogglePick}
+              >
+                {/* {props.togglePickedData?.fetchUseditem?.togglepick} */}
+              </img>
               <span>PRODUCT</span>
             </D.ItemPick>
           </D.ItemPricePick>
