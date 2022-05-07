@@ -1,24 +1,15 @@
-import { gql, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 
 import QuestionListUI from "./questionList.presenter";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-
-const FETCH_QUESTIONS = gql`
-  query fetchUseditemQuestions($page: Int, $useditemId: ID!) {
-    fetchUseditemQuestions(page: $page, useditemId: $useditemId) {
-      _id
-      contents
-      user {
-        _id
-        name
-      }
-      createdAt
-    }
-  }
-`;
+import {
+  DELETE_USED_ITEM_QUESTION,
+  FETCH_USED_ITEM_QUESTIONS
+} from "./questionList.queries";
+import { Modal } from "antd";
 
 const Wrap = styled.div`
   width: 100%;
@@ -26,12 +17,13 @@ const Wrap = styled.div`
 
 export default function QuestionList() {
   const router = useRouter();
-  const { data, fetchMore } = useQuery(FETCH_QUESTIONS, {
+
+  const { data, fetchMore } = useQuery(FETCH_USED_ITEM_QUESTIONS, {
     variables: {
       page: 1,
-      useditemId: String(router.query.itemId),
+      useditemId: String(router.query.itemId)
       // useditemId: "62736f7ca8255b002988fbf0",
-    },
+    }
   });
 
   const onLoadMore = () => {
@@ -39,7 +31,7 @@ export default function QuestionList() {
 
     fetchMore({
       variables: {
-        page: Math.ceil(data?.fetchUseditemQuestions.length / 10) + 1,
+        page: Math.ceil(data?.fetchUseditemQuestions.length / 10) + 1
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult?.fetchUseditemQuestions) {
@@ -48,10 +40,10 @@ export default function QuestionList() {
         return {
           fetchUseditemQuestions: [
             ...prev.fetchUseditemQuestions,
-            ...fetchMoreResult.fetchUseditemQuestions,
-          ],
+            ...fetchMoreResult.fetchUseditemQuestions
+          ]
         };
-      },
+      }
     });
   };
 

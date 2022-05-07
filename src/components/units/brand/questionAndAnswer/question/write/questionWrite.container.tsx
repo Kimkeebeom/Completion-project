@@ -3,7 +3,10 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import QuestionWriteUI from "./questionWrite.presenter";
 
-import { CREATE_QUESTION } from "./questionWrite.queries";
+import {
+  CREATE_QUESTION,
+  FETCH_USED_ITEM_QUESTION
+} from "./questionWrite.queries";
 
 export default function QuestionWrite() {
   const router = useRouter();
@@ -20,9 +23,15 @@ export default function QuestionWrite() {
         variables: {
           useditemId: String(router.query.itemId),
           createUseditemQuestionInput: {
-            contents: question,
-          },
+            contents: question
+          }
         },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTION,
+            variables: { useditemId: String(router.query.itemId), page: 1 }
+          }
+        ]
       });
       console.log(result);
       SetQuestion("");
@@ -35,6 +44,7 @@ export default function QuestionWrite() {
     <QuestionWriteUI
       onChangeQuestion={onChangeQuestion}
       onClickSubmit={onClickSubmit}
+      question={question}
     />
   );
 }

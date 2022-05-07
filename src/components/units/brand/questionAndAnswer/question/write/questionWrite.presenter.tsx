@@ -6,6 +6,7 @@ export default function QuestionWriteUI(props) {
       <C.InputWrap
         placeholder="내용을 입력해주세요"
         onChange={props.onChangeQuestion}
+        value={props.question}
       ></C.InputWrap>
       <C.ButtonWrap>
         <C.CancelButton>취소하기</C.CancelButton>

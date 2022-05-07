@@ -22,7 +22,7 @@ export default function Detail() {
     }
   });
 
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   const [togglePick] = useMutation(TOGGLE_PICK, {
     variables: { useditemId: String(router.query.itemId) }
