@@ -4,7 +4,6 @@ import DetailUI from "./itemDetail.presenter";
 
 import { TOGGLE_PICK, FETCH_USED_ITEM } from "./itemDetail.queries";
 
-
 export default function Detail() {
   const router = useRouter();
 
@@ -24,6 +23,9 @@ export default function Detail() {
 
   return (
     <DetailUI
+      lat={data?.fetchUseditem?.useditemAddress?.lat}
+      lng={data?.fetchUseditem?.useditemAddress?.lng}
+      address={data?.fetchUseditem?.useditemAddress?.address}
       data={data}
       MoveToproductEdit={MoveToproductEdit}
       togglePick={togglePick}

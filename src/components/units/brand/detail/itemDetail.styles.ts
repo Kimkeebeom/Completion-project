@@ -16,12 +16,24 @@ export const IWrap = styled.div`
 export const ImageWrap = styled.div`
   width: 45%;
   border: 1px solid black;
+  overflow: hidden;
+  height: 500px;
+`;
+
+export const Image = styled.div`
+  width: 100%;
+  height: 100%;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const InfoWrap = styled.div`
   width: 55%;
   padding: 30px;
-  /* background-color: rebeccapurple; */
 `;
 
 export const ItemName = styled.div`

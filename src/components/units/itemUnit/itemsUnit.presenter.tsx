@@ -1,9 +1,21 @@
 import * as I from "./itemsUnit.styles";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
+import { ReactChild, ReactFragment, ReactPortal } from "react";
 
-export default function ItemsUnitUI(props) {
+export default function ItemsUnitUI(props: {
+  el: {
+    images: any[];
+    _id: any;
+    tags: boolean | ReactChild | ReactFragment | ReactPortal;
+    price: boolean | ReactChild | ReactFragment | ReactPortal;
+    seller: { name: boolean | ReactChild | ReactFragment | ReactPortal };
+    remarks: boolean | ReactChild | ReactFragment | ReactPortal;
+    name: boolean | ReactChild | ReactFragment | ReactPortal;
+  };
+}) {
   const router = useRouter();
+  console.log(props.el.images);
   return (
     <I.ListItems key={uuidv4()}>
       <div>

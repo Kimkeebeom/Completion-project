@@ -106,13 +106,13 @@ export default function WriteUI(props: IProductWriteUI) {
                     ? props.zipcode
                     : props.data?.fetchUseditem?.useditemAddress?.zipcode
                 }
+                readOnly
               />
               <button onClick={props.showModal}>우편번호 검색</button>
             </div>
             <S.AddressContents>
               <S.AddressInput
                 type="text"
-                onChange={props.onChangeAddress}
                 defaultValue={
                   props.address
                     ? props.address

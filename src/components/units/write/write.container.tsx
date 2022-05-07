@@ -84,12 +84,6 @@ export default function Write(props: IProductWriteUI) {
     // cancle 누르면 창 사라짐
   };
 
-  const onChangeAddress = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setAddress(event.target.value);
-  };
-
   const onChangeAddressDetail = (event: {
     target: { value: SetStateAction<string> };
   }) => {
@@ -103,13 +97,15 @@ export default function Write(props: IProductWriteUI) {
   };
 
   const onCompleteDaumPostCode = (data: any) => {
+    console.log(data);
     setAddress(data.address);
     setZipcode(data.zonecode);
     setIsModalVisible(false);
   };
 
   const onClickSubmit = async () => {
-    console.log("image:", images);
+    // console.log("image:", images);
+    // console.log(address, zipcode, addressDetail);
     try {
       const result = await createUseditem({
         variables: {
@@ -127,7 +123,7 @@ export default function Write(props: IProductWriteUI) {
           }
         }
       });
-      console.log("result:", result);
+      // console.log("result:", result);
       Modal.success({ content: "상품이 성공적으로 등록되었습니다" });
       router.push(`/brand/${result.data.createUseditem._id}`);
     } catch (error) {
@@ -136,50 +132,43 @@ export default function Write(props: IProductWriteUI) {
   };
 
   const onClickUpdateSubmit = async () => {
+    console.log(address, zipcode, addressDetail);
+
     interface IAdress {
       zipcode: string;
       address: string;
       addressDetail?: string;
     }
     interface IUpdatedUseditemInput {
-      useditemAddress: IAdress;
-      images: string[];
-      price: number;
-      contents: string;
-      remarks: string;
-      name: string;
+      useditemAddress?: IAdress;
+      images?: string[];
+      price?: number;
+      contents?: string;
+      remarks?: string;
+      name?: string;
     }
-    const myIUpdatedUseditemInput: IUpdatedUseditemInput = {
-      images: []
-      // price: 0,
-      // contents: "",
-      // remarks: "",
-      // name: "",
-      // useditemAddress: {
-      //   address,
-      //   addressDetail,
-      //   zipcode
-      // }
-    };
+    const myIUpdatedUseditemInput: IUpdatedUseditemInput = {};
     if (name !== "") myIUpdatedUseditemInput.name = name;
     if (remarks !== "") myIUpdatedUseditemInput.remarks = remarks;
     if (contents !== "") myIUpdatedUseditemInput.contents = contents;
     if (price !== Number("")) myIUpdatedUseditemInput.price = price;
     if (images !== []) myIUpdatedUseditemInput.images = images;
-    if (address) myIUpdatedUseditemInput.useditemAddress.address = address;
-    if (addressDetail) {
-      myIUpdatedUseditemInput.useditemAddress.addressDetail = addressDetail;
+    if (zipcode || address || addressDetail) {
+      myIUpdatedUseditemInput.useditemAddress = {};
+      if (address) myIUpdatedUseditemInput.useditemAddress.address = address;
+      if (addressDetail) {
+        myIUpdatedUseditemInput.useditemAddress.addressDetail = addressDetail;
+      }
+      if (zipcode) myIUpdatedUseditemInput.useditemAddress.zipcode = zipcode;
     }
-    if (zipcode) myIUpdatedUseditemInput.useditemAddress.zipcode = zipcode;
     try {
-      console.log(name, remarks);
-      // await updateUseditem({
-      //   variables: {
-      //     useditemId: props.data?.fetchUseditem._id,
-      //     updateUseditemInput: myIUpdatedUseditemInput
-      //   }
-      // });
-      // router.push(`/brand/${router.query.itemId}`);
+      await updateUseditem({
+        variables: {
+          useditemId: props.data?.fetchUseditem._id,
+          updateUseditemInput: myIUpdatedUseditemInput
+        }
+      });
+      router.push(`/brand/${router.query.itemId}`);
     } catch (error) {
       alert(error.message);
     }
@@ -198,7 +187,6 @@ export default function Write(props: IProductWriteUI) {
       onChangeRemarks={onChangeRemarks}
       onChangeContents={onChangeContents}
       onChangePrice={onChangePrice}
-      onChangeAddress={onChangeAddress}
       onChangeAddressDetail={onChangeAddressDetail}
       onClickSubmit={onClickSubmit}
       onClickUpdateSubmit={onClickUpdateSubmit}
