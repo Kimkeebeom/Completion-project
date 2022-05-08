@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from "react";
 import QuestionsAnswerWriteUI from "./questionAnswerWrite.presenter";
 import {
   CREATE_USED_ITEM_QUESTION_ANSWERS,
-  FETCH_USED_ITEM_QUESTION_ANSWERS
+  FETCH_USED_ITEM_QUESTION_ANSWERS,
 } from "./questionAnswerWrite.queries";
 
 export default function QuestionsAnswerWrite(props) {
@@ -36,17 +36,16 @@ export default function QuestionsAnswerWrite(props) {
       await createUseditemQuestionAnswer({
         variables: {
           createUseditemQuestionAnswerInput: {
-            contents: questionAnswers
+            contents: questionAnswers,
           },
-          useditemQuestionId: props.questionEl._id // 기존 댓글에 대한 ID값!
+          useditemQuestionId: props.questionEl._id, // 기존 댓글에 대한 ID값!
         },
         refetchQueries: [
           {
             query: FETCH_USED_ITEM_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: props.questionEl._id, page: 1 }
-            // variables: { useditemQuestionId: props.useditemQuestionId }
-          }
-        ]
+            variables: { useditemQuestionId: props.questionEl._id, page: 1 },
+          },
+        ],
       });
       setQuestionAnswers("");
       setIsClick(false);

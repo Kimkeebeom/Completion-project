@@ -8,7 +8,7 @@ export default function QuestionsAnswerWriteUI(props) {
           // id={props.el._id}
           onClick={props.onClickCommentAnswerButton}
         >
-          답글
+          답글 등록하기
         </A.AnswerButton>
       )}
       {props.isClick && (
