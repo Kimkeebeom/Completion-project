@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
 
-export const AnswerButton = styled.div`
+export const AnswerButton = styled.button`
   /* width: 5%;
   padding-left: 95%; */
   cursor: pointer;
+
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border: none;
 `;
 
 export const Wrap = styled.div`

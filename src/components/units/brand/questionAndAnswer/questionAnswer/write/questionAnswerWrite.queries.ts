@@ -16,8 +16,11 @@ export const CREATE_USED_ITEM_QUESTION_ANSWERS = gql`
 `;
 
 export const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
-  query fetchUseditemQuestionAnswers($useditemQuestionId: ID!) {
-    fetchUseditemQuestionAnswers(useditemQuestionId: $useditemQuestionId) {
+  query fetchUseditemQuestionAnswers($useditemQuestionId: ID!, $page: Int) {
+    fetchUseditemQuestionAnswers(
+      useditemQuestionId: $useditemQuestionId
+      page: $page
+    ) {
       _id
       contents
     }
