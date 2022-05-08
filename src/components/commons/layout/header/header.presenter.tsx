@@ -21,7 +21,7 @@ export default function HeaderUI(props) {
             <>
               <li>
                 {props.userInfo?.name}님 포인트{" "}
-                {props.pointData?.fetchPointTransactions[0].balance}P
+                {props.pointData?.fetchPointTransactions[0]?.balance}P
               </li>
               <li onClick={props.onClickCharge}>충전</li>
               <li onClick={props.onClickLogout}>로그아웃</li>

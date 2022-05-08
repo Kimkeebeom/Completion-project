@@ -28,7 +28,7 @@ export const RightWrap = styled.div`
   width: 85%;
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+  /* background-color: aqua; */
   padding-right: 15px;
 `;
 

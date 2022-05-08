@@ -9,7 +9,7 @@ export default function QuestionWriteUI(props) {
         value={props.question}
       ></C.InputWrap>
       <C.ButtonWrap>
-        <C.CancelButton>취소하기</C.CancelButton>
+        {/* <C.CancelButton>취소하기</C.CancelButton> */}
         <C.SubmitButton onClick={props.onClickSubmit}>작성하기</C.SubmitButton>
       </C.ButtonWrap>
     </C.Wrap>

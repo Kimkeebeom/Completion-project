@@ -28,6 +28,7 @@ export const LoginBox = styled.div`
   span {
     font-size: 24px;
     font-weight: 400;
+    margin-right: 20px;
   }
   input {
     width: 610px;
