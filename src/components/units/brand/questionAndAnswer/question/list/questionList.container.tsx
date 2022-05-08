@@ -1,15 +1,11 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 
 import QuestionListUI from "./questionList.presenter";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import {
-  DELETE_USED_ITEM_QUESTION,
-  FETCH_USED_ITEM_QUESTIONS
-} from "./questionList.queries";
-import { Modal } from "antd";
+import { FETCH_USED_ITEM_QUESTIONS } from "./questionList.queries";
 
 const Wrap = styled.div`
   width: 100%;

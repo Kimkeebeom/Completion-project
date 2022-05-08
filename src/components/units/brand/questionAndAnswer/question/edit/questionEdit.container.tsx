@@ -41,6 +41,10 @@ export default function QuestionEdit(props) {
     setIsEdit(true);
   };
 
+  const onClickCancelButton = () => {
+    setIsEdit(false);
+  };
+
   const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
     setEditContents(event.target.value);
   };
@@ -73,7 +77,9 @@ export default function QuestionEdit(props) {
 
   return (
     <QuestionEditUI
+      onClickRegisCommentAnswer={props.onClickRegisCommentAnswer}
       onClickUpdateButton={onClickUpdateButton}
+      onClickCancelButton={onClickCancelButton}
       onChangeContents={onChangeContents}
       onClickUpdate={onClickUpdate}
       onClickDelete={onClickDelete}
