@@ -7,5 +7,6 @@ export const Wrap = styled.div`
     display: flex;
     justify-content: flex-end;
     padding-right: 35px;
+    margin-bottom: 10px;
   }
 `;

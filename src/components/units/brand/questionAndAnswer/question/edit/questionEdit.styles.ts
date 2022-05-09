@@ -9,6 +9,10 @@ export const Wrap = styled.div`
   padding: 20px 0px;
 `;
 
+// export const WholeBox = styled.div`
+//   display: flex;
+// `;
+
 export const LeftWrap = styled.div`
   width: 15%;
   display: flex;
